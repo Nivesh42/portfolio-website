@@ -62,3 +62,7 @@ body {
     font-family: 'Space Grotesk', sans-serif;
     -webkit-font-smoothing: antialiased;
 }
+
+html {
+    scroll-behavior: smooth;
+}

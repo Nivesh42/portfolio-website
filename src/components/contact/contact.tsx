@@ -24,7 +24,7 @@ export const Contact = ({ data }: { data: ContactData }) => {
     };
 
     return (
-        <section className="min-h-screen bg-background flex items-center justify-center px-6 py-24">
+        <section id="contact" className="min-h-screen bg-background flex items-center justify-center px-6 py-24">
             <div className="container-main flex items-center justify-center">
                 <div className="border border-border p-10 w-full max-w-md">
                     <h2 className="text-2xl font-bold uppercase tracking-tight text-foreground mb-10">

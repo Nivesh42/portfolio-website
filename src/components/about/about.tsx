@@ -15,7 +15,7 @@ type AboutData = {
 
 export const About = ({ data }: { data: AboutData }) => {
     return (
-        <section className="min-h-screen bg-background border-t border-b border-border grid grid-cols-1 md:grid-cols-2">
+        <section id="about" className="min-h-screen bg-background border-t border-b border-border grid grid-cols-1 md:grid-cols-2">
             {/* Left */}
             <div className="section-spacing container-main md:container-none md:px-12 flex flex-col justify-center border-b md:border-b-0 md:border-r border-border">
                 <h2 className="text-5xl md:text-6xl xl:text-7xl font-bold uppercase leading-none tracking-tight text-foreground mb-8">

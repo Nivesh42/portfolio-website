@@ -3,6 +3,8 @@
 import Link from "next/link";
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
+import { useEffect } from "react";
+import { usePathname } from "next/navigation";
 
 type NavLink = { label: string; href: string };
 
@@ -14,7 +16,21 @@ type HeaderProps = {
 
 export const Header = ({ siteName, navLinks }: HeaderProps) => {
     const [open, setOpen] = useState(false);
-    console.log(navLinks)
+
+    const pathname = usePathname();
+
+    useEffect(() => {
+        if (window.location.hash) {
+            const el = document.querySelector(window.location.hash);
+            if (el) {
+                setTimeout(() => {
+                    el.scrollIntoView({ behavior: "smooth" });
+                }, 100);
+            }
+        }
+    }, [pathname]);
+
+    
     return (
         <header className="fixed top-0 left-0 right-0 z-50 bg-background border-b border-border">
             <div className="flex items-center justify-between px-6 py-4">
@@ -40,7 +56,7 @@ export const Header = ({ siteName, navLinks }: HeaderProps) => {
 
                 <div className="flex items-center gap-4">
                     <Link
-                        href="#contact"
+                        href="/#contact"
                         className="hidden md:block bg-primary text-primary-foreground text-sm font-medium px-5 py-2 hover:bg-primary/90 transition-colors uppercase tracking-wide"
                     >
                         Contact
@@ -71,7 +87,7 @@ export const Header = ({ siteName, navLinks }: HeaderProps) => {
                         </Link>
                     ))}
                     <Link
-                        href="#contact"
+                        href="/#contact"
                         onClick={() => setOpen(false)}
                         className="bg-primary text-primary-foreground text-sm font-medium px-5 py-3 text-center hover:bg-primary/90 transition-colors uppercase tracking-wide"
                     >

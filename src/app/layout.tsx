@@ -25,7 +25,7 @@ export default async function RootLayout({
     const settings = await client.fetch(siteSettingsQuery);
 
     return (
-        <html lang="en" className="dark h-full antialiased">
+        <html lang="en" className="dark h-full antialiased" data-scroll-behavior="smooth">
             <body className={`${spaceGrotesk.className} min-h-full flex flex-col`}>
                 <Header siteName={settings.siteName} navLinks={settings.navLinks} />
                 <main className="flex-1">{children}</main>

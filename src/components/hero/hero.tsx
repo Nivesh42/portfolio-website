@@ -18,7 +18,7 @@ export const Hero = ({
 }) => {
     console.log("HERO DATA:", data);
     return (
-        <section className="min-h-screen bg-background flex flex-col justify-center px-6 md:px-12 pt-12 pb-16">
+        <section id="home" className="min-h-screen bg-background flex flex-col justify-center px-6 md:px-12 pt-12 pb-16">
             {/* Available badge */}
             <div className="container-main">
                 {data?.badge && (
