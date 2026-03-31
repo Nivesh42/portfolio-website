@@ -1,26 +1,26 @@
 import { client } from "@/sanity/lib/client";
-import { homePageQuery } from "@/sanity/lib/queries";
-import { Hero } from "@/components/hero";
-import { About } from "@/components/about";
-import { Contact } from "@/components/contact";
-import { caseStudiesQuery } from "@/sanity/lib/queries";
-import { CaseStudies } from "@/components";
-import { Writing } from "@/components";
-import { postsQuery } from "@/sanity/lib/queries";
+import {
+    homePageQuery,
+    caseStudiesQuery,
+    postsQuery,
+} from "@/sanity/lib/queries";
+
+import { Hero, About, Contact, CaseStudies, Writing } from "@/components";
+
+export const revalidate = 60; // ISR for performance
 
 export default async function Home() {
-    const page = await client.fetch(homePageQuery);
-
-    console.log("FETCHED DATA:", page);
+    const [page, projects, posts] = await Promise.all([
+        client.fetch(homePageQuery),
+        client.fetch(caseStudiesQuery),
+        client.fetch(postsQuery),
+    ]);
 
     if (!page) {
         return <div className="p-12">Page not found</div>;
     }
 
     const resumeUrl = page?.settings?.resumePdf?.asset?.url;
-    const projects = await client.fetch(caseStudiesQuery);
-    const posts = await client.fetch(postsQuery);
-
 
     return (
         <>
