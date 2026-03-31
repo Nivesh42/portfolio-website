@@ -1,0 +1,7 @@
+export * from "./header";
+export * from "./footer";
+export * from "./hero";
+export * from "./contact";
+export * from "./about";
+export * from "./writing";
+export * from "./case-studies";
