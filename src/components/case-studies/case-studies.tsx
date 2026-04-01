@@ -35,19 +35,19 @@ export const CaseStudies = ({ projects }: { projects: Project[] }) => {
                                         </p>
                                     )}
 
-                                    <h3 className="text-3xl md:text-4xl font-semibold tracking-tight">
+                                    <h3 className="text-2xl md:text-3xl font-semibold tracking-tight">
                                         {project.title}
                                     </h3>
 
                                     {project.subheading && (
-                                        <p className="text-sm text-muted-foreground mt-4 max-w-sm">
+                                        <p className="text-sm text-muted-foreground mt-2 max-w-sm">
                                             {project.subheading}
                                         </p>
                                     )}
 
                                     {/* Metrics */}
                                     {project.outcomeMetrics && project.outcomeMetrics.length > 0 && (
-                                        <div className="flex gap-10 mt-8">
+                                        <div className="flex gap-10 mt-4">
                                             {project.outcomeMetrics.map((metric, i) => (
                                                 <div key={i}>
                                                     <p className="text-2xl font-semibold">{metric.value}</p>

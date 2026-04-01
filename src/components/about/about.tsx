@@ -15,7 +15,7 @@ type AboutData = {
 
 export const About = ({ data }: { data: AboutData }) => {
     return (
-        <section id="about" className="min-h-screen bg-background border-t border-b border-border grid grid-cols-1 md:grid-cols-2">
+        <section id="about" className="min-h-full bg-background border-t border-b border-border grid grid-cols-1 md:grid-cols-2 max-w-7xl mx-auto">
             {/* Left */}
             <div className="section-spacing container-main md:container-none md:px-12 flex flex-col justify-center border-b md:border-b-0 md:border-r border-border">
                 <h2 className="text-5xl md:text-6xl xl:text-7xl font-bold uppercase leading-none tracking-tight text-foreground mb-8">
@@ -30,7 +30,7 @@ export const About = ({ data }: { data: AboutData }) => {
             </div>
 
             {/* Right — timeline */}
-            <div className="relative section-spacing md:px-12 px-6">
+            <div className="relative section-spacing md:px-12 px-12">
                 <div className="absolute left-13 md:left-13 top-0 bottom-0 w-px bg-border" />
                 <div className="flex flex-col gap-10">
                     {data?.timeline?.map((item, i) => (

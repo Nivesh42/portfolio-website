@@ -48,7 +48,7 @@ export const Hero = ({
                     {data?.primaryCta?.label && data?.primaryCta?.href && (
                         <Link
                             href={data.primaryCta.href}
-                            className="bg-primary text-primary-foreground text-sm font-medium px-6 py-3 uppercase tracking-widest hover:bg-primary/90 transition-colors"
+                            className="bg-primary text-primary-foreground text-xs font-medium px-6 py-3 uppercase tracking-widest hover:bg-primary/90 transition-colors md:text-sm"
                         >
                             {data.primaryCta.label}
                         </Link>
@@ -59,7 +59,7 @@ export const Hero = ({
                             href={resumeUrl}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="border border-border text-foreground text-sm font-medium px-6 py-3 uppercase tracking-widest hover:bg-accent transition-colors"
+                            className="border border-border text-foreground text-xs font-medium px-6 py-3 uppercase tracking-widest hover:bg-accent transition-colors md:text-sm"
                         >
                             {data.secondaryCta.label}
                         </Link>
