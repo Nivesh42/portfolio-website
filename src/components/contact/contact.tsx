@@ -17,10 +17,23 @@ type ContactData = {
 export const Contact = ({ data }: { data: ContactData }) => {
     const [form, setForm] = useState({ name: "", email: "", message: "" });
 
-    const handleSubmit = (e: React.MouseEvent) => {
+    const handleSubmit = async (e: React.MouseEvent) => {
         e.preventDefault();
-        // handle submission
-        console.log(form);
+
+        const res = await fetch("/api/contact", {
+            method: "POST",
+            body: JSON.stringify(form),
+            headers: {
+                "Content-Type": "application/json",
+            },
+        });
+
+        if (res.ok) {
+            alert("Message sent!");
+            setForm({ name: "", email: "", message: "" });
+        } else {
+            alert("Something went wrong");
+        }
     };
 
     return (
