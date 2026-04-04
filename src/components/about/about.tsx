@@ -1,17 +1,4 @@
-type TimelineItem = {
-    period: string;
-    role: string;
-    description: string;
-    current: boolean;
-};
-
-type AboutData = {
-    headlineLineOne?: string;
-    headlineLineTwo?: string;
-    bio?: string;
-    timeline?: TimelineItem[];
-};
-
+import type { AboutData, TimelineItem } from "@/types";
 
 export const About = ({ data }: { data: AboutData }) => {
     return (
@@ -33,7 +20,7 @@ export const About = ({ data }: { data: AboutData }) => {
             <div className="relative section-spacing md:px-12 px-12">
                 <div className="absolute left-13 md:left-13 top-0 bottom-0 w-px bg-border" />
                 <div className="flex flex-col gap-10">
-                    {data?.timeline?.map((item, i) => (
+                    {data?.timeline?.map((item: TimelineItem, i) => (
                         <div key={i} className="flex gap-5 relative">
                             <div className="shrink-0 mt-1 z-10">
                                 <div className={`w-2.5 h-2.5 ${item.current ? "bg-primary" : "bg-muted-foreground"}`} />

@@ -6,13 +6,12 @@ import { Menu, X } from "lucide-react";
 import { useEffect } from "react";
 import { usePathname } from "next/navigation";
 
-type NavLink = { label: string; href: string };
+import type { NavLink } from "@/types";
 
-type HeaderProps = {
+interface HeaderProps {
     siteName: string;
     navLinks: NavLink[];
-};
-
+}
 
 export const Header = ({ siteName, navLinks }: HeaderProps) => {
     const [open, setOpen] = useState(false);
@@ -30,7 +29,7 @@ export const Header = ({ siteName, navLinks }: HeaderProps) => {
         }
     }, [pathname]);
 
-    
+
     return (
         <header className="fixed top-0 left-0 right-0 z-50 bg-background border-b border-border">
             <div className="flex items-center justify-between px-6 py-4">
@@ -43,15 +42,19 @@ export const Header = ({ siteName, navLinks }: HeaderProps) => {
 
                 {/* Desktop nav */}
                 <nav className="hidden md:flex items-center gap-8">
-                    {navLinks.map((link) => (
-                        <Link
-                            key={link.href}
-                            href={link.href}
-                            className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors uppercase tracking-wide"
-                        >
-                            {link.label}
-                        </Link>
-                    ))}
+                    {navLinks
+                        .filter((link): link is { label: string; href: string } =>
+                            link.label !== null && link.href !== null
+                        )
+                        .map((link) => (
+                            <Link
+                                key={link.href}
+                                href={link.href}
+                                className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors uppercase tracking-wide"
+                            >
+                                {link.label}
+                            </Link>
+                        ))}
                 </nav>
 
                 <div className="flex items-center gap-4">
@@ -76,16 +79,19 @@ export const Header = ({ siteName, navLinks }: HeaderProps) => {
             {/* Mobile menu */}
             {open && (
                 <div className="md:hidden border-t border-border px-6 py-6 flex flex-col gap-6 bg-background">
-                    {navLinks.map((link) => (
-                        <Link
-                            key={link.href}
-                            href={link.href}
-                            onClick={() => setOpen(false)}
-                            className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors uppercase tracking-wide"
-                        >
-                            {link.label}
-                        </Link>
-                    ))}
+                    {navLinks
+                        .filter((link): link is { label: string; href: string } =>
+                            link.label !== null && link.href !== null
+                        )
+                        .map((link) => (
+                            <Link
+                                key={link.href}
+                                href={link.href}
+                                className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors uppercase tracking-wide"
+                            >
+                                {link.label}
+                            </Link>
+                        ))}
                     <Link
                         href="/#contact"
                         onClick={() => setOpen(false)}

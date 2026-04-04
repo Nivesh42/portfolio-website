@@ -13,6 +13,291 @@
  */
 
 // Source: schema.json
+export type SiteSettings = {
+    _id: string;
+    _type: 'siteSettings';
+    _createdAt: string;
+    _updatedAt: string;
+    _rev: string;
+    siteName?: string;
+    tagline?: string;
+    defaultSeo?: Seo;
+    defaultOgImage?: {
+        asset?: {
+            _ref: string;
+            _type: 'reference';
+            _weak?: boolean;
+            [internalGroqTypeReferenceTo]?: 'sanity.imageAsset';
+        };
+        media?: unknown;
+        hotspot?: SanityImageHotspot;
+        crop?: SanityImageCrop;
+        _type: 'image';
+    };
+    socialLinks?: Array<{
+        platform?: string;
+        url?: string;
+        _key: string;
+    }>;
+    navLinks?: Array<{
+        label?: string;
+        href?: string;
+        _key: string;
+    }>;
+    footerCopyright?: string;
+    resumePdf?: {
+        asset?: {
+            _ref: string;
+            _type: 'reference';
+            _weak?: boolean;
+            [internalGroqTypeReferenceTo]?: 'sanity.fileAsset';
+        };
+        media?: unknown;
+        _type: 'file';
+    };
+};
+
+export type SanityImageCrop = {
+    _type: 'sanity.imageCrop';
+    top?: number;
+    bottom?: number;
+    left?: number;
+    right?: number;
+};
+
+export type SanityImageHotspot = {
+    _type: 'sanity.imageHotspot';
+    x?: number;
+    y?: number;
+    height?: number;
+    width?: number;
+};
+
+export type Seo = {
+    _type: 'seo';
+    metaTitle?: string;
+    metaDescription?: string;
+    ogImage?: {
+        asset?: {
+            _ref: string;
+            _type: 'reference';
+            _weak?: boolean;
+            [internalGroqTypeReferenceTo]?: 'sanity.imageAsset';
+        };
+        media?: unknown;
+        hotspot?: SanityImageHotspot;
+        crop?: SanityImageCrop;
+        _type: 'image';
+    };
+    canonicalUrl?: string;
+    noIndex?: boolean;
+};
+
+export type Post = {
+    _id: string;
+    _type: 'post';
+    _createdAt: string;
+    _updatedAt: string;
+    _rev: string;
+    title?: string;
+    slug?: Slug;
+    excerpt?: string;
+    coverImage?: {
+        asset?: {
+            _ref: string;
+            _type: 'reference';
+            _weak?: boolean;
+            [internalGroqTypeReferenceTo]?: 'sanity.imageAsset';
+        };
+        media?: unknown;
+        hotspot?: SanityImageHotspot;
+        crop?: SanityImageCrop;
+        alt?: string;
+        _type: 'image';
+    };
+    tags?: Array<string>;
+    body?: PortableTextBody;
+    publishedAt?: string;
+    seo?: Seo;
+};
+
+export type PortableTextBody = Array<
+    | {
+        children?: Array<{
+            marks?: Array<string>;
+            text?: string;
+            _type: 'span';
+            _key: string;
+        }>;
+        style?: 'normal' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'blockquote';
+        listItem?: 'bullet' | 'number';
+        markDefs?: Array<{
+            href?: string;
+            _type: 'link';
+            _key: string;
+        }>;
+        level?: number;
+        _type: 'block';
+        _key: string;
+    }
+    | {
+        asset?: {
+            _ref: string;
+            _type: 'reference';
+            _weak?: boolean;
+            [internalGroqTypeReferenceTo]?: 'sanity.imageAsset';
+        };
+        media?: unknown;
+        hotspot?: SanityImageHotspot;
+        crop?: SanityImageCrop;
+        caption?: string;
+        alt?: string;
+        _type: 'image';
+        _key: string;
+    }
+>;
+
+export type Slug = {
+    _type: 'slug';
+    current?: string;
+    source?: string;
+};
+
+export type Project = {
+    _id: string;
+    _type: 'project';
+    _createdAt: string;
+    _updatedAt: string;
+    _rev: string;
+    title?: string;
+    slug?: Slug;
+    industry?: string;
+    subheading?: string;
+    heroImage?: {
+        asset?: {
+            _ref: string;
+            _type: 'reference';
+            _weak?: boolean;
+            [internalGroqTypeReferenceTo]?: 'sanity.imageAsset';
+        };
+        media?: unknown;
+        hotspot?: SanityImageHotspot;
+        crop?: SanityImageCrop;
+        alt?: string;
+        _type: 'image';
+    };
+    tags?: Array<string>;
+    outcomeMetrics?: Array<{
+        value?: string;
+        label?: string;
+        _key: string;
+    }>;
+    sections?: Array<
+        | {
+            body?: PortableTextBody;
+            _type: 'textBlock';
+            _key: string;
+        }
+        | {
+            image?: {
+                asset?: {
+                    _ref: string;
+                    _type: 'reference';
+                    _weak?: boolean;
+                    [internalGroqTypeReferenceTo]?: 'sanity.imageAsset';
+                };
+                media?: unknown;
+                hotspot?: SanityImageHotspot;
+                crop?: SanityImageCrop;
+                _type: 'image';
+            };
+            caption?: string;
+            alt?: string;
+            fullWidth?: boolean;
+            _type: 'imageBlock';
+            _key: string;
+        }
+        | {
+            metrics?: Array<{
+                value?: string;
+                label?: string;
+                _key: string;
+            }>;
+            _type: 'metricsBlock';
+            _key: string;
+        }
+        | {
+            quote?: string;
+            attribution?: string;
+            _type: 'quoteBlock';
+            _key: string;
+        }
+        | {
+            variant?: 'line' | 'space' | 'gradient';
+            _type: 'divider';
+            _key: string;
+        }
+    >;
+    publishedAt?: string;
+    featured?: boolean;
+    seo?: Seo;
+};
+
+export type Page = {
+    _id: string;
+    _type: 'page';
+    _createdAt: string;
+    _updatedAt: string;
+    _rev: string;
+    slug?: Slug;
+    hero?: {
+        badge?: string;
+        headlineLineOne?: string;
+        headlineLineTwo?: string;
+        headlineAccent?: string;
+        subheadline?: string;
+        primaryCta?: {
+            label?: string;
+            href?: string;
+        };
+        secondaryCta?: {
+            label?: string;
+            href?: string;
+        };
+    };
+    about?: {
+        headlineLineOne?: string;
+        headlineLineTwo?: string;
+        bio?: string;
+        timeline?: Array<{
+            period?: string;
+            role?: string;
+            description?: string;
+            current?: boolean;
+            _key: string;
+        }>;
+    };
+    skills?: {
+        heading?: string;
+        categories?: Array<{
+            label?: string;
+            items?: Array<string>;
+            _key: string;
+        }>;
+    };
+    contact?: {
+        heading?: string;
+        namePlaceholder?: string;
+        nameLabel?: string;
+        emailPlaceholder?: string;
+        emailLabel?: string;
+        messagePlaceholder?: string;
+        messageLabel?: string;
+        submitLabel?: string;
+    };
+    seo?: Seo;
+};
+
 export type SanityImagePaletteSwatch = {
     _type: 'sanity.imagePaletteSwatch';
     background?: string;
@@ -48,22 +333,6 @@ export type SanityImageMetadata = {
     blurHash?: string;
     hasAlpha?: boolean;
     isOpaque?: boolean;
-};
-
-export type SanityImageHotspot = {
-    _type: 'sanity.imageHotspot';
-    x?: number;
-    y?: number;
-    height?: number;
-    width?: number;
-};
-
-export type SanityImageCrop = {
-    _type: 'sanity.imageCrop';
-    top?: number;
-    bottom?: number;
-    left?: number;
-    right?: number;
 };
 
 export type SanityFileAsset = {
@@ -125,22 +394,122 @@ export type Geopoint = {
     alt?: number;
 };
 
-export type Slug = {
-    _type: 'slug';
-    current?: string;
-    source?: string;
-};
-
 export type AllSanitySchemaTypes =
+    | SiteSettings
+    | SanityImageCrop
+    | SanityImageHotspot
+    | Seo
+    | Post
+    | PortableTextBody
+    | Slug
+    | Project
+    | Page
     | SanityImagePaletteSwatch
     | SanityImagePalette
     | SanityImageDimensions
     | SanityImageMetadata
-    | SanityImageHotspot
-    | SanityImageCrop
     | SanityFileAsset
     | SanityAssetSourceData
     | SanityImageAsset
-    | Geopoint
-    | Slug;
+    | Geopoint;
 export declare const internalGroqTypeReferenceTo: unique symbol;
+// Source: ./src/sanity/lib/queries.ts
+// Variable: siteSettingsQuery
+// Query: *[_type == "siteSettings"][0] {    siteName,    tagline,    footerCopyright,    resumePdf { asset-> { url } },    socialLinks[] { platform, url },    navLinks[] { label, href },  }
+export type SiteSettingsQueryResult = {
+    siteName: string | null;
+    tagline: string | null;
+    footerCopyright: string | null;
+    resumePdf: {
+        asset: {
+            url: string | null;
+        } | null;
+    } | null;
+    socialLinks: Array<{
+        platform: string | null;
+        url: string | null;
+    }> | null;
+    navLinks: Array<{
+        label: string | null;
+        href: string | null;
+    }> | null;
+} | null;
+// Variable: homePageQuery
+// Query: *[_type == "page"][0] {    hero {      badge,      headlineLineOne,      headlineLineTwo,      headlineAccent,      subheadline,      primaryCta,      secondaryCta,    },    about {      headlineLineOne,      headlineLineTwo,      bio,      timeline[] {        period,        role,        description,        current,      },    },    contact {      heading,      nameLabel,      namePlaceholder,      emailLabel,      emailPlaceholder,      messageLabel,      messagePlaceholder,      submitLabel,    },    "settings": *[_type == "siteSettings"][0]{      resumePdf {        asset->{ url }      }    }  }
+export type HomePageQueryResult = {
+    hero: {
+        badge: string | null;
+        headlineLineOne: string | null;
+        headlineLineTwo: string | null;
+        headlineAccent: string | null;
+        subheadline: string | null;
+        primaryCta: {
+            label?: string;
+            href?: string;
+        } | null;
+        secondaryCta: {
+            label?: string;
+            href?: string;
+        } | null;
+    } | null;
+    about: {
+        headlineLineOne: string | null;
+        headlineLineTwo: string | null;
+        bio: string | null;
+        timeline: Array<{
+            period: string | null;
+            role: string | null;
+            description: string | null;
+            current: boolean | null;
+        }> | null;
+    } | null;
+    contact: {
+        heading: string | null;
+        nameLabel: string | null;
+        namePlaceholder: string | null;
+        emailLabel: string | null;
+        emailPlaceholder: string | null;
+        messageLabel: string | null;
+        messagePlaceholder: string | null;
+        submitLabel: string | null;
+    } | null;
+    settings: {
+        resumePdf: {
+            asset: {
+                url: string | null;
+            } | null;
+        } | null;
+    } | null;
+} | null;
+// Variable: caseStudiesQuery
+// Query: *[_type == "project"] | order(featured desc, publishedAt desc)[0...4]{    title,    "slug": slug.current,    industry,    subheading,    outcomeMetrics[0...2]  }
+export type CaseStudiesQueryResult = Array<{
+    title: string | null;
+    slug: string | null;
+    industry: string | null;
+    subheading: string | null;
+    outcomeMetrics: Array<{
+        value?: string;
+        label?: string;
+        _key: string;
+    }> | null;
+}>;
+// Variable: postsQuery
+// Query: *[_type == "post"] | order(publishedAt desc)[0...3]{    title,    "slug": slug.current,    tags,    publishedAt  }
+export type PostsQueryResult = Array<{
+    title: string | null;
+    slug: string | null;
+    tags: Array<string> | null;
+    publishedAt: string | null;
+}>;
+
+// Query TypeMap
+import '@sanity/client';
+declare module '@sanity/client' {
+    interface SanityQueries {
+        '\n  *[_type == "siteSettings"][0] {\n    siteName,\n    tagline,\n    footerCopyright,\n    resumePdf { asset-> { url } },\n    socialLinks[] { platform, url },\n    navLinks[] { label, href },\n  }\n': SiteSettingsQueryResult;
+        '\n  *[_type == "page"][0] {\n    hero {\n      badge,\n      headlineLineOne,\n      headlineLineTwo,\n      headlineAccent,\n      subheadline,\n      primaryCta,\n      secondaryCta,\n    },\n    about {\n      headlineLineOne,\n      headlineLineTwo,\n      bio,\n      timeline[] {\n        period,\n        role,\n        description,\n        current,\n      },\n    },\n    contact {\n      heading,\n      nameLabel,\n      namePlaceholder,\n      emailLabel,\n      emailPlaceholder,\n      messageLabel,\n      messagePlaceholder,\n      submitLabel,\n    },\n    "settings": *[_type == "siteSettings"][0]{\n      resumePdf {\n        asset->{ url }\n      }\n    }\n  }\n': HomePageQueryResult;
+        '\n  *[_type == "project"] | order(featured desc, publishedAt desc)[0...4]{\n    title,\n    "slug": slug.current,\n    industry,\n    subheading,\n    outcomeMetrics[0...2]\n  }\n': CaseStudiesQueryResult;
+        '\n  *[_type == "post"] | order(publishedAt desc)[0...3]{\n    title,\n    "slug": slug.current,\n    tags,\n    publishedAt\n  }\n': PostsQueryResult;
+    }
+}

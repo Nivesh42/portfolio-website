@@ -1,11 +1,7 @@
 import Link from "next/link"
-type Post = {
-    title: string;
-    slug: string;
-    tags?: string[];
-    publishedAt: string;
-};
-export const Writing = ({ posts }: { posts: Post[] }) => {
+import type { PostCardData } from "@/types";
+
+export const Writing = ({ posts }: { posts: PostCardData[] }) => {
     return (
         <section className="bg-background px-6 md:px-12 py-32">
             <div className="max-w-6xl mx-auto">
@@ -50,11 +46,13 @@ export const Writing = ({ posts }: { posts: Post[] }) => {
 
                             {/* Right date */}
                             <div className="text-xs uppercase tracking-widest text-muted-foreground md:mt-1">
-                                {new Date(post.publishedAt).toLocaleDateString("en-US", {
-                                    month: "short",
-                                    day: "2-digit",
-                                    year: "numeric",
-                                })}
+                                {post.publishedAt
+                                    ? new Date(post.publishedAt).toLocaleDateString("en-US", {
+                                        month: "short",
+                                        day: "2-digit",
+                                        year: "numeric",
+                                    })
+                                    : null}
                             </div>
                         </Link>
                     ))}

@@ -3,21 +3,16 @@
 import { useState } from "react";
 
 
-type ContactData = {
-    heading?: string;
-    nameLabel?: string;
-    namePlaceholder?: string;
-    emailLabel?: string;
-    emailPlaceholder?: string;
-    messageLabel?: string;
-    messagePlaceholder?: string;
-    submitLabel?: string;
-};
+import type { ContactData } from "@/types";
 
-export const Contact = ({ data }: { data: ContactData }) => {
+interface ContactProps {
+    data: ContactData;
+}
+
+export const Contact = ({ data }: ContactProps) => {
     const [form, setForm] = useState({ name: "", email: "", message: "" });
 
-    const handleSubmit = async (e: React.MouseEvent) => {
+    const handleSubmit = async (e: React.MouseEvent<HTMLButtonElement>) => {
         e.preventDefault();
 
         const res = await fetch("/api/contact", {

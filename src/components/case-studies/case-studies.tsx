@@ -1,15 +1,12 @@
 import Link from "next/link"
 
-type Project = {
-    title: string;
-    slug: string;
-    industry?: string;
-    subheading?: string;
-    outcomeMetrics?: { value: string; label: string }[];
-};
+import type { ProjectCardData, OutcomeMetric } from "@/types";
 
+interface CaseStudiesProps {
+    projects: ProjectCardData[];
+}
 
-export const CaseStudies = ({ projects }: { projects: Project[] }) => {
+export const CaseStudies = ({ projects }: CaseStudiesProps) => {
     return (
         <section className="bg-background border-t border-b border-border px-6 md:px-12 py-28">
             <div className="max-w-7xl mx-auto">
@@ -48,7 +45,7 @@ export const CaseStudies = ({ projects }: { projects: Project[] }) => {
                                     {/* Metrics */}
                                     {project.outcomeMetrics && project.outcomeMetrics.length > 0 && (
                                         <div className="flex gap-10 mt-4">
-                                            {project.outcomeMetrics.map((metric, i) => (
+                                            {project.outcomeMetrics?.map((metric: OutcomeMetric, i) => (
                                                 <div key={i}>
                                                     <p className="text-2xl font-semibold">{metric.value}</p>
                                                     <p className="text-[11px] uppercase text-muted-foreground">

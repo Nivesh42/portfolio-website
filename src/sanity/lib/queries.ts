@@ -1,7 +1,6 @@
-// src/sanity/lib/queries.ts
-import { groq } from "next-sanity";
+import { defineQuery } from "groq";
 
-export const siteSettingsQuery = groq`
+export const siteSettingsQuery = defineQuery(`
   *[_type == "siteSettings"][0] {
     siteName,
     tagline,
@@ -10,9 +9,9 @@ export const siteSettingsQuery = groq`
     socialLinks[] { platform, url },
     navLinks[] { label, href },
   }
-`;
+`);
 
-export const homePageQuery = groq`
+export const homePageQuery = defineQuery(`
   *[_type == "page"][0] {
     hero {
       badge,
@@ -45,16 +44,14 @@ export const homePageQuery = groq`
       submitLabel,
     },
     "settings": *[_type == "siteSettings"][0]{
-    resumePdf{
-      asset->{
-        url
+      resumePdf {
+        asset->{ url }
       }
     }
   }
-  }
-`;
+`);
 
-export const caseStudiesQuery = `
+export const caseStudiesQuery = defineQuery(`
   *[_type == "project"] | order(featured desc, publishedAt desc)[0...4]{
     title,
     "slug": slug.current,
@@ -62,13 +59,13 @@ export const caseStudiesQuery = `
     subheading,
     outcomeMetrics[0...2]
   }
-`;
+`);
 
-export const postsQuery = `
+export const postsQuery = defineQuery(`
   *[_type == "post"] | order(publishedAt desc)[0...3]{
     title,
     "slug": slug.current,
     tags,
     publishedAt
   }
-`;
+`);

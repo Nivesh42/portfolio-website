@@ -4,7 +4,7 @@ import {
     caseStudiesQuery,
     postsQuery,
 } from "@/sanity/lib/queries";
-
+import { notFound } from "next/navigation";
 import { Hero, About, Contact, CaseStudies, Writing } from "@/components";
 
 export const revalidate = 60; // ISR for performance
@@ -16,11 +16,10 @@ export default async function Home() {
         client.fetch(postsQuery),
     ]);
 
-    if (!page) {
-        return <div className="p-12">Page not found</div>;
-    }
+    if (!page) notFound();
 
-    const resumeUrl = page?.settings?.resumePdf?.asset?.url;
+    // null → undefined so it matches `string | undefined`
+    const resumeUrl = page.settings?.resumePdf?.asset?.url ?? undefined;
 
     return (
         <>

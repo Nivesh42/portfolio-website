@@ -15,8 +15,9 @@ const spaceGrotesk = Space_Grotesk({
     subsets: ["latin"],
     weight: ["300", "400", "500", "600", "700"],
     display: "swap",
-    variable: "--font-sans"
+    variable: "--font-sans",
 });
+
 export default async function RootLayout({
     children,
 }: {
@@ -24,12 +25,19 @@ export default async function RootLayout({
 }) {
     const settings = await client.fetch(siteSettingsQuery);
 
+    // After typegen, settings fields are typed — but they're all optional in schema,
+    // so provide fallbacks here at the boundary rather than inside every component
+    const siteName = settings?.siteName ?? "Nivesh Jain";
+    const navLinks = settings?.navLinks ?? [];
+    const footerCopyright = settings?.footerCopyright ?? "";
+    const socialLinks = settings?.socialLinks ?? [];
+
     return (
         <html lang="en" className="dark h-full antialiased" data-scroll-behavior="smooth">
             <body className={`${spaceGrotesk.className} min-h-full flex flex-col`}>
-                <Header siteName={settings.siteName} navLinks={settings.navLinks} />
+                <Header siteName={siteName} navLinks={navLinks} />
                 <main className="flex-1">{children}</main>
-                <Footer copyright={settings.footerCopyright} socialLinks={settings.socialLinks} />
+                <Footer copyright={footerCopyright} socialLinks={socialLinks} />
             </body>
         </html>
     );

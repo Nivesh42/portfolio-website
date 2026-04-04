@@ -1,22 +1,12 @@
 import Link from "next/link";
-type HeroData = {
-    badge?: string;
-    headlineLineOne?: string;
-    headlineLineTwo?: string;
-    headlineAccent?: string;
-    subheadline?: string;
-    primaryCta?: { label: string; href: string };
-    secondaryCta?: { label: string; href: string };
-};
+import type { HeroData } from "@/types";
 
-export const Hero = ({
-    data,
-    resumeUrl,
-}: {
+interface HeroProps {
     data: HeroData;
     resumeUrl?: string;
-}) => {
-    console.log("HERO DATA:", data);
+}
+
+export const Hero = ({ data, resumeUrl }: HeroProps) => {
     return (
         <section id="home" className="min-h-screen bg-background flex flex-col justify-center px-6 md:px-12 pt-12 pb-16">
             {/* Available badge */}
