@@ -62,7 +62,7 @@ export const Writing = ({ posts, showCTA }: { posts: PostCardData[]; showCTA: bo
                     <div className="flex justify-center mt-16">
                         <Link
                             href="/writing"
-                            className="border border-border px-8 py-3 text-sm uppercase tracking-widest hover:bg-accent transition"
+                            className="border border-border px-8 py-3 text-sm uppercase tracking-widest hover:bg-foreground hover:text-background"
                         >
                             Read all writings
                         </Link>

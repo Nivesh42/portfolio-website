@@ -45,7 +45,7 @@ export const CaseStudies = ({ projects, showCTA }: CaseStudiesProps) => {
 
                                         {/* SUBTEXT — calmer */}
                                         {project.subheading && (
-                                            <p className="text-[15px] sm:text-base leading-relaxed text-muted-foreground max-w-sm [font-family:var(--font-body)]">
+                                            <p className="text-[15px] sm:text-base leading-relaxed text-muted-foreground max-w-sm">
                                                 {project.subheading}
                                             </p>
                                         )}
@@ -88,7 +88,7 @@ export const CaseStudies = ({ projects, showCTA }: CaseStudiesProps) => {
                     <div className="flex justify-center mt-16">
                         <Link
                             href="/case-studies"
-                            className="border border-border px-8 py-3 text-label uppercase tracking-widest hover:bg-foreground hover:text-background"
+                            className="border border-border px-8 py-3 text-sm uppercase tracking-widest hover:bg-foreground hover:text-background"
                         >
                             View all case studies
                         </Link>

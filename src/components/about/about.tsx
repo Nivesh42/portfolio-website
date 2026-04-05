@@ -17,7 +17,7 @@ export const About = ({ data }: { data: AboutData }) => {
 
                 {/* BIO — calm contrast */}
                 {data?.bio && (
-                    <p className="text-[15px] sm:text-base leading-relaxed text-muted-foreground max-w-sm [font-family:var(--font-body)]">
+                    <p className="text-[15px] sm:text-base leading-relaxed text-muted-foreground max-w-sm">
                         {data.bio}
                     </p>
                 )}
@@ -34,10 +34,10 @@ export const About = ({ data }: { data: AboutData }) => {
                                 <div className={`w-2.5 h-2.5 ${item.current ? "bg-primary" : "bg-muted-foreground"}`} />
                             </div>
                             <div className="pb-2">
-                                <p className={`text-xs uppercase tracking-widest mb-2 ${item.current ? "text-primary" : "text-muted-foreground"}`}>
+                                <p className={`text-xs uppercase tracking-widest mb-2 ${item.current ? "text-primary" : "text-muted-foreground"} `}>
                                     {item.period}
                                 </p>
-                                <h3 className="text-sm md:text-base font-bold uppercase tracking-tight text-foreground mb-2">
+                                <h3 className="text-sm md:text-base font-bold uppercase tracking-tight text-foreground mb-2 hover:bg-background hover:text-primary hover:border-primary">
                                     {item.role}
                                 </h3>
                                 <p className="text-xs uppercase tracking-widest text-muted-foreground leading-relaxed">

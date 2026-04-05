@@ -50,7 +50,7 @@ export const Header = ({ siteName, navLinks }: HeaderProps) => {
                             <Link
                                 key={link.href}
                                 href={link.href}
-                                className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors uppercase tracking-wide"
+                                className="text-sm font-medium text-muted-foreground hover:text-foreground uppercase tracking-wide"
                             >
                                 {link.label}
                             </Link>
@@ -60,7 +60,7 @@ export const Header = ({ siteName, navLinks }: HeaderProps) => {
                 <div className="flex items-center gap-4">
                     <Link
                         href="/#contact"
-                        className="hidden md:block bg-primary text-primary-foreground text-sm font-medium px-5 py-2 hover:bg-primary/90 transition-colors uppercase tracking-wide"
+                        className="hidden md:block bg-primary text-primary-foreground text-sm font-medium px-5 py-2 hover:bg-background hover:text-primary hover:border-primary border border-transparent uppercase tracking-wide"
                     >
                         Contact
                     </Link>
@@ -95,7 +95,7 @@ export const Header = ({ siteName, navLinks }: HeaderProps) => {
                     <Link
                         href="/#contact"
                         onClick={() => setOpen(false)}
-                        className="bg-primary text-primary-foreground text-sm font-medium px-5 py-3 text-center hover:bg-primary/90 transition-colors uppercase tracking-wide"
+                        className="bg-primary text-primary-foreground text-sm font-medium px-5 py-3 text-center hover:bg-background hover:text-primary hover:border-primary border border-transparent uppercase tracking-wide"
                     >
                         Contact
                     </Link>

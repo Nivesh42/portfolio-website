@@ -42,7 +42,7 @@ export const Contact = ({ data }: ContactProps) => {
                     <div className="flex flex-col gap-6">
 
                         <div className="flex flex-col gap-2">
-                            <label className="text-xs uppercase tracking-widest text-muted-foreground">
+                            <label className="text-xs uppercase tracking-widest font-medium text-muted-foreground">
                                 {data?.nameLabel ?? "Identification"}
                             </label>
                             <input
@@ -50,12 +50,12 @@ export const Contact = ({ data }: ContactProps) => {
                                 placeholder={data?.namePlaceholder ?? "YOUR NAME"}
                                 value={form.name}
                                 onChange={(e) => setForm({ ...form, name: e.target.value })}
-                                className="bg-transparent border border-border px-4 py-3 text-body uppercase tracking-widest text-foreground placeholder:text-muted-foreground/60 focus:outline-none focus:border-primary"
+                                className="bg-transparent border border-border px-4 py-3 text-xs uppercase tracking-widest text-foreground placeholder:text-muted-foreground/60 focus:outline-none focus:border-primary"
                             />
                         </div>
 
                         <div className="flex flex-col gap-2">
-                            <label className="text-xs uppercase tracking-widest text-muted-foreground">
+                            <label className="text-xs uppercase tracking-widest font-medium text-muted-foreground">
                                 {data?.emailLabel ?? "Routing Address"}
                             </label>
                             <input
@@ -63,12 +63,12 @@ export const Contact = ({ data }: ContactProps) => {
                                 placeholder={data?.emailPlaceholder ?? "EMAIL@EXAMPLE.COM"}
                                 value={form.email}
                                 onChange={(e) => setForm({ ...form, email: e.target.value })}
-                                className="bg-transparent border border-border px-4 py-3 text-body uppercase tracking-widest text-foreground placeholder:text-muted-foreground/60 focus:outline-none focus:border-primary"
+                                className="bg-transparent border border-border px-4 py-3 text-xs uppercase tracking-widest text-foreground placeholder:text-muted-foreground/60 focus:outline-none focus:border-primary"
                             />
                         </div>
 
                         <div className="flex flex-col gap-2">
-                            <label className="text-xs uppercase tracking-widest text-muted-foreground">
+                            <label className="text-xs uppercase font-medium tracking-widest text-muted-foreground">
                                 {data?.messageLabel ?? "Payload"}
                             </label>
                             <textarea
@@ -76,13 +76,13 @@ export const Contact = ({ data }: ContactProps) => {
                                 rows={4}
                                 value={form.message}
                                 onChange={(e) => setForm({ ...form, message: e.target.value })}
-                                className="bg-transparent border border-border px-4 py-3 text-body uppercase tracking-widest text-foreground placeholder:text-muted-foreground/60 focus:outline-none focus:border-primary resize-none"
+                                className="bg-transparent border border-border px-4 py-3 text-xs uppercase tracking-widest text-foreground placeholder:text-muted-foreground/60 focus:outline-none focus:border-primary resize-none"
                             />
                         </div>
 
                         <button
                             onClick={handleSubmit}
-                            className="w-full bg-background border border-border text-foreground text-body font-medium uppercase tracking-widest py-4 hover:bg-primary hover:text-primary-foreground hover:border-primary mt-2"
+                            className="w-full bg-background border border-border text-foreground text-sm font-medium uppercase tracking-widest py-4 hover:bg-primary hover:text-primary-foreground hover:border-primary mt-2"
                         >
                             {data?.submitLabel ?? "Initialize Contact"}
                         </button>
