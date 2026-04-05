@@ -5,6 +5,7 @@ import { Footer } from "@/components/footer";
 import { client } from "@/sanity/lib/client";
 import { siteSettingsQuery } from "@/sanity/lib/queries";
 import { Space_Grotesk } from "next/font/google";
+import { Inter } from "next/font/google";
 
 export const metadata: Metadata = {
     title: "Nivesh Jain — Product Manager",
@@ -20,6 +21,11 @@ const spaceGrotesk = Space_Grotesk({
     weight: ["300", "400", "500", "600", "700"],
     display: "swap",
     variable: "--font-sans",
+});
+
+const inter = Inter({
+    subsets: ["latin"],
+    variable: "--font-body",
 });
 
 export default async function RootLayout({
@@ -39,7 +45,7 @@ export default async function RootLayout({
     return (
         <html lang="en" className="dark h-full antialiased" data-scroll-behavior="smooth">
             <link rel="icon" href="/favicon.ico" />
-            <body className={`${spaceGrotesk.className} min-h-full flex flex-col`}>
+            <body className={`${spaceGrotesk.variable} ${inter.variable} min-h-full flex flex-col`}>
                 <Header siteName={siteName} navLinks={navLinks} />
                 <main className="flex-1">{children}</main>
                 <Footer copyright={footerCopyright} socialLinks={socialLinks} />

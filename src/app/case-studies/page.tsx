@@ -7,5 +7,5 @@ export const revalidate = 60;
 export default async function CaseStudiesPage() {
     const projects = await client.fetch(allCaseStudiesQuery);
 
-    return <CaseStudies projects={projects} />;
+    return <CaseStudies projects={projects} showCTA={false}/>;
 }

@@ -9,7 +9,7 @@ import { ShareButton } from "./../share-button";
 const ptComponents = {
     block: {
         normal: ({ children }: { children?: React.ReactNode }) => (
-            <p className="text-sm leading-relaxed text-muted-foreground mb-6">
+            <p className="text-base leading-relaxed text-muted-foreground mb-6 [font-family:var(--font-body)]">
                 {children}
             </p>
         ),
@@ -165,7 +165,7 @@ export function EssayPage({ post }: { post: PostDetail }) {
             </section>
 
             {/* ── Body ─────────────────────────────────────────────────────── */}
-            <section className="max-w-3xl mx-auto px-6 md:px-12 pb-24">
+            <section className="max-w-3xl mx-auto px-6 md:px-12 pb-24 prose-terminal">
                 {post.body && (
                     // eslint-disable-next-line @typescript-eslint/no-explicit-any
                     <PortableText value={post.body as any} components={ptComponents} />

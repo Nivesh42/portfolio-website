@@ -4,11 +4,11 @@ import type { ProjectDetail } from "@/types";
 import { urlFor } from "@/sanity/lib/image";
 import Image from "next/image";
 
-// ─── Portable Text components ────────────────────────────────────────────────
+// ─── Portable Text components ───
 const ptComponents = {
     block: {
         normal: ({ children }: { children?: React.ReactNode }) => (
-            <p className="text-sm uppercase tracking-widest text-muted-foreground leading-relaxed mb-4">
+            <p className="text-base leading-relaxed text-muted-foreground mb-6 [font-family:var(--font-body)]">
                 {children}
             </p>
         ),
@@ -38,13 +38,13 @@ const ptComponents = {
     },
 };
 
-// ─── Section renderer ────────────────────────────────────────────────────────
+// ─── Section renderer ───
 function RenderSection({ section }: { section: ProjectDetail["sections"] extends (infer T)[] | null ? T : never }) {
     if (!section) return null;
 
     if (section._type === "textBlock") {
         return (
-            <div className="max-w-2xl">
+            <div className="max-w-2xl prose-terminal">
                 {section.body && (
                     // eslint-disable-next-line @typescript-eslint/no-explicit-any
                     <PortableText value={section.body as any} components={ptComponents} />
@@ -121,7 +121,7 @@ function RenderSection({ section }: { section: ProjectDetail["sections"] extends
     return null;
 }
 
-// ─── Main component ──────────────────────────────────────────────────────────
+// ─── Main component ───
 export function CaseStudyPage({ project }: { project: ProjectDetail }) {
     const heroUrl = project.heroImage?.asset?.url;
 

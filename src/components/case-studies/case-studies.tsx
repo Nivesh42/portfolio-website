@@ -3,10 +3,10 @@ import Link from "next/link"
 import type { ProjectCardData, AllProjectCardData, OutcomeMetric } from "@/types";
 
 interface CaseStudiesProps {
-  projects: ProjectCardData[] | AllProjectCardData[];
+    projects: ProjectCardData[] | AllProjectCardData[];
 }
 
-export const CaseStudies = ({ projects }: CaseStudiesProps) => {
+export const CaseStudies = ({ projects, showCTA }: CaseStudiesProps & { showCTA: boolean }) => {
     return (
         <section className="bg-background border-t border-b border-border px-6 md:px-12 py-28">
             <div className="max-w-7xl mx-auto">
@@ -64,15 +64,16 @@ export const CaseStudies = ({ projects }: CaseStudiesProps) => {
                 </div>
 
                 {/* CTA */}
-                <div className="flex justify-center mt-16">
-                    <Link
-                        href="/case-studies"
-                        className="border border-border px-8 py-3 text-xs uppercase tracking-widest hover:bg-accent transition"
-                    >
-                        View all case studies
-                    </Link>
-                </div>
-
+                {showCTA && (
+                    <div className="flex justify-center mt-16">
+                        <Link
+                            href="/case-studies"
+                            className="border border-border px-8 py-3 text-xs uppercase tracking-widest hover:bg-accent transition"
+                        >
+                            View all case studies
+                        </Link>
+                    </div>
+                )}
             </div>
         </section>
     )

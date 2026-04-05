@@ -7,5 +7,5 @@ export const revalidate = 60;
 export default async function EssaysPage() {
     const posts = await client.fetch(allPostsQuery);
 
-    return <Writing posts={posts} />;
+    return <Writing posts={posts} showCTA={false}/>;
 }

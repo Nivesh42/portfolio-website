@@ -1,7 +1,7 @@
 import Link from "next/link";
 import type { PostCardData } from "@/types";
 
-export const Writing = ({ posts }: { posts: PostCardData[] }) => {
+export const Writing = ({ posts, showCTA }: { posts: PostCardData[]; showCTA: boolean }) => {
     return (
         <section className="bg-background px-6 md:px-12 py-32">
             <div className="max-w-6xl mx-auto">
@@ -58,14 +58,16 @@ export const Writing = ({ posts }: { posts: PostCardData[] }) => {
                     ))}
                 </div>
                 {/* CTA */}
-                <div className="flex justify-center mt-16">
-                    <Link
-                        href="/writing"
-                        className="border border-border px-8 py-3 text-xs uppercase tracking-widest hover:bg-accent transition"
-                    >
-                        Read all writings
-                    </Link>
-                </div>
+                {showCTA && (
+                    <div className="flex justify-center mt-16">
+                        <Link
+                            href="/writing"
+                            className="border border-border px-8 py-3 text-xs uppercase tracking-widest hover:bg-accent transition"
+                        >
+                            Read all writings
+                        </Link>
+                    </div>
+                )}
             </div>
         </section>
     )

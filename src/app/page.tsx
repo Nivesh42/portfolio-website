@@ -24,8 +24,8 @@ export default async function Home() {
     return (
         <>
             <Hero data={page.hero} resumeUrl={resumeUrl} />
-            <CaseStudies projects={projects} />
-            <Writing posts={posts} />
+            <CaseStudies projects={projects} showCTA={true}/>
+            <Writing posts={posts} showCTA={true}/>
             <About data={page.about} />
             <Contact data={page.contact} />
         </>
