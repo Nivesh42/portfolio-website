@@ -4,7 +4,6 @@ import Link from "next/link";
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
 import { useEffect } from "react";
-import { usePathname } from "next/navigation";
 
 import type { NavLink } from "@/types";
 
@@ -16,18 +15,13 @@ interface HeaderProps {
 export const Header = ({ siteName, navLinks }: HeaderProps) => {
     const [open, setOpen] = useState(false);
 
-    const pathname = usePathname();
-
     useEffect(() => {
-        if (window.location.hash) {
-            const el = document.querySelector(window.location.hash);
-            if (el) {
-                setTimeout(() => {
-                    el.scrollIntoView({ behavior: "smooth" });
-                }, 100);
-            }
+        if (open) {
+            document.body.style.overflow = "hidden";
+        } else {
+            document.body.style.overflow = "";
         }
-    }, [pathname]);
+    }, [open]);
 
 
     return (
@@ -78,27 +72,38 @@ export const Header = ({ siteName, navLinks }: HeaderProps) => {
 
             {/* Mobile menu */}
             {open && (
-                <div className="md:hidden border-t border-border px-6 py-6 flex flex-col gap-6 bg-background">
-                    {navLinks
-                        .filter((link): link is { label: string; href: string } =>
-                            link.label !== null && link.href !== null
-                        )
-                        .map((link) => (
-                            <Link
-                                key={link.href}
-                                href={link.href}
-                                className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors uppercase tracking-wide"
-                            >
-                                {link.label}
-                            </Link>
-                        ))}
-                    <Link
-                        href="/#contact"
-                        onClick={() => setOpen(false)}
-                        className="bg-primary text-primary-foreground text-sm font-medium px-5 py-3 text-center hover:bg-background hover:text-primary hover:border-primary border border-transparent uppercase tracking-wide"
+                <div
+                    className="fixed inset-0 z-40 md:hidden"
+                    onClick={() => setOpen(false)}
+                >
+                    {/* Menu panel */}
+                    <div
+                        className="absolute top-15.5 left-0 right-0 border-t border-border px-6 py-6 flex flex-col gap-6 bg-background"
+                        onClick={(e) => e.stopPropagation()}
                     >
-                        Contact
-                    </Link>
+                        {navLinks
+                            .filter((link): link is { label: string; href: string } =>
+                                link.label !== null && link.href !== null
+                            )
+                            .map((link) => (
+                                <Link
+                                    key={link.href}
+                                    href={link.href}
+                                    onClick={() => setOpen(false)}
+                                    className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors uppercase tracking-wide"
+                                >
+                                    {link.label}
+                                </Link>
+                            ))}
+
+                        <Link
+                            href="/#contact"
+                            onClick={() => setOpen(false)}
+                            className="bg-primary text-primary-foreground text-sm font-medium px-5 py-3 text-center hover:bg-background hover:text-primary hover:border-primary border border-transparent uppercase tracking-wide"
+                        >
+                            Contact
+                        </Link>
+                    </div>
                 </div>
             )}
         </header>
