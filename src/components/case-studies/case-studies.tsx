@@ -22,7 +22,7 @@ export const CaseStudies = ({ projects, showCTA }: CaseStudiesProps) => {
                         <Link
                             key={project.slug}
                             href={`/case-studies/${project.slug}`}
-                            className="group relative min-h-[420px] md:min-h-[480px] border border-border bg-card overflow-hidden hover:border-primary"
+                            className="group relative min-h-105 md:min-h-120 border border-border bg-card overflow-hidden hover:border-primary"
                         >
                             <div className="p-8 flex flex-col h-full">
 
@@ -33,7 +33,7 @@ export const CaseStudies = ({ projects, showCTA }: CaseStudiesProps) => {
                                     <div className="flex flex-col gap-4">
 
                                         {project.industry && (
-                                            <p className="text-[10px] uppercase tracking-widest text-primary">
+                                            <p className="text-label uppercase tracking-widest text-primary">
                                                 {project.industry}
                                             </p>
                                         )}
@@ -59,7 +59,7 @@ export const CaseStudies = ({ projects, showCTA }: CaseStudiesProps) => {
                                                     <p className="text-xl md:text-2xl font-semibold text-primary">
                                                         {metric.value}
                                                     </p>
-                                                    <p className="text-[10px] uppercase tracking-widest text-muted-foreground">
+                                                    <p className="text-label uppercase tracking-widest text-muted-foreground">
                                                         {metric.label}
                                                     </p>
                                                 </div>
@@ -70,7 +70,7 @@ export const CaseStudies = ({ projects, showCTA }: CaseStudiesProps) => {
 
                                 {/* HARD DIVIDER + CTA */}
                                 <div className="pt-6 border-t border-border flex items-center justify-between">
-                                    <span className="text-[10px] uppercase tracking-widest text-muted-foreground group-hover:text-foreground">
+                                    <span className="text-label uppercase tracking-widest text-muted-foreground group-hover:text-foreground">
                                         View Case Study
                                     </span>
                                     <span className="text-muted-foreground group-hover:text-primary">

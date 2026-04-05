@@ -175,13 +175,29 @@ export function CaseStudyPage({ project }: { project: ProjectDetail }) {
                 {/* HERO IMAGE */}
                 {heroUrl && (
                     <div className="relative w-full aspect-video border border-border overflow-hidden mb-20">
+
+                        {/* Background (blur fill) */}
                         <Image
                             src={heroUrl}
-                            alt={project.heroImage?.alt ?? project.title ?? ""}
+                            alt=""
                             fill
                             priority
-                            className="object-cover"
+                            className="object-cover scale-110 blur-2xl opacity-40"
                         />
+
+                        {/* Foreground with breathing room */}
+                        <div className="absolute inset-0 p-4 md:p-8 lg:p-12">
+                            <div className="relative w-full h-full rounded-md overflow-hidden">
+                                <Image
+                                    src={heroUrl}
+                                    alt={project.heroImage?.alt ?? project.title ?? ""}
+                                    fill
+                                    priority
+                                    className="object-contain"
+                                />
+                            </div>
+                        </div>
+
                     </div>
                 )}
             </section>

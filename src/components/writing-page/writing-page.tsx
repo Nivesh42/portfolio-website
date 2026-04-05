@@ -60,7 +60,7 @@ const ptComponents = {
                             src={value.asset.url}
                             alt={value.alt ?? ""}
                             fill
-                            className="object-cover"
+                            className="object-cover scale-110 blur-2xl opacity-40"
                         />
                     </div>
                     {value.caption && (
@@ -149,17 +149,36 @@ export function EssayPage({ post }: { post: PostDetail }) {
                 {/* Cover image */}
                 {coverUrl && (
                     <div className="relative w-full aspect-video border border-border overflow-hidden mb-16">
+
+                        {/* Background (blur fill) */}
                         <Image
                             src={
                                 post.coverImage
-                                    ? urlFor(post.coverImage).width(1200).quality(90).url()
+                                    ? urlFor(post.coverImage).width(1200).quality(60).url()
                                     : coverUrl
                             }
-                            alt={post.coverImage?.alt ?? post.title ?? ""}
+                            alt=""
                             fill
                             priority
-                            className="object-cover"
+                            className="object-cover scale-110 blur-2xl opacity-40"
                         />
+
+                        {/* Foreground wrapper (THIS creates breathing room) */}
+                        <div className="absolute inset-0 p-6 md:p-10">
+                            <div className="relative w-full h-full">
+                                <Image
+                                    src={
+                                        post.coverImage
+                                            ? urlFor(post.coverImage).width(1200).quality(90).url()
+                                            : coverUrl
+                                    }
+                                    alt={post.coverImage?.alt ?? post.title ?? ""}
+                                    fill
+                                    priority
+                                    className="object-contain"
+                                />
+                            </div>
+                        </div>
                     </div>
                 )}
             </section>
