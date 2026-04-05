@@ -8,9 +8,9 @@ interface HeroProps {
 
 export const Hero = ({ data, resumeUrl }: HeroProps) => {
     return (
-        <section id="home" className="min-h-screen bg-background flex flex-col justify-center px-6 md:px-12 pt-12 pb-16">
+        <section id="home" className="min-h-[calc(100vh-80px)] flex flex-col justify-center bg-background px-6 md:px-12 pt-24 pb-20">
             {/* Available badge */}
-            <div className="container-main">
+            <div className="container-main max-w-7xl mx-auto w-full">
                 {data?.badge && (
                     <div className="flex items-center gap-2 mb-8">
                         <div className="border border-border px-3 py-1 flex items-center gap-2">
@@ -38,7 +38,7 @@ export const Hero = ({ data, resumeUrl }: HeroProps) => {
                     {data?.primaryCta?.label && data?.primaryCta?.href && (
                         <Link
                             href={data.primaryCta.href}
-                            className="bg-primary text-primary-foreground text-sm font-medium px-6 py-3 uppercase tracking-widest hover:bg-background hover:text-primary hover:border-primary border border-transparent"
+                            className="bg-primary text-primary-foreground text-xs md:text-sm font-medium px-6 py-3 uppercase tracking-widest hover:bg-background hover:text-primary hover:border-primary border border-transparent"
                         >
                             {data.primaryCta.label}
                         </Link>
@@ -49,7 +49,7 @@ export const Hero = ({ data, resumeUrl }: HeroProps) => {
                             href={resumeUrl}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="border border-border text-foreground text-sm font-medium px-6 py-3 uppercase tracking-widest hover:bg-foreground hover:text-background"
+                            className="border border-border text-foreground text-xs md:text-sm font-medium px-6 py-3 uppercase tracking-widest hover:bg-foreground hover:text-background"
                         >
                             {data.secondaryCta.label}
                         </Link>

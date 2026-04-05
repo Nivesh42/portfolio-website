@@ -8,7 +8,7 @@ interface CaseStudiesProps {
 
 export const CaseStudies = ({ projects, showCTA }: CaseStudiesProps) => {
     return (
-        <section className="bg-background border-t border-b border-border px-6 md:px-12 py-28">
+        <section className="bg-background border-t border-b border-border px-6 md:px-12 py-24 md:py-32">
             <div className="max-w-7xl mx-auto">
 
                 {/* OUTLINE HEADING */}

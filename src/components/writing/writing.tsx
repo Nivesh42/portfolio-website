@@ -3,8 +3,8 @@ import type { PostCardData } from "@/types";
 
 export const Writing = ({ posts, showCTA }: { posts: PostCardData[]; showCTA: boolean }) => {
     return (
-        <section className="bg-background px-6 md:px-12 py-32">
-            <div className="max-w-6xl mx-auto">
+        <section className="bg-background px-6 md:px-12 py-24 md:py-32">
+            <div className="max-w-7xl mx-auto">
 
                 {/* Heading */}
                 <div className="mb-20">
