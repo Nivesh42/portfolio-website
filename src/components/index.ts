@@ -8,3 +8,4 @@ export * from "./case-studies";
 export * from "./case-study-page";
 export * from "./writing-page";
 export * from "./share-button";
+export * from "./side-bar";

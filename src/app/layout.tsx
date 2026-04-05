@@ -35,8 +35,6 @@ export default async function RootLayout({
 }) {
     const settings = await client.fetch(siteSettingsQuery);
 
-    // After typegen, settings fields are typed — but they're all optional in schema,
-    // so provide fallbacks here at the boundary rather than inside every component
     const siteName = settings?.siteName ?? "Nivesh Jain";
     const navLinks = settings?.navLinks ?? [];
     const footerCopyright = settings?.footerCopyright ?? "";

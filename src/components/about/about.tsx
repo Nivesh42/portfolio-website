@@ -2,19 +2,27 @@ import type { AboutData, TimelineItem } from "@/types";
 
 export const About = ({ data }: { data: AboutData }) => {
     return (
-        <section id="about" className="min-h-full bg-background border-t border-b border-border grid grid-cols-1 md:grid-cols-2 max-w-7xl mx-auto">
-            {/* Left */}
-            <div className="section-spacing container-main md:container-none md:px-12 flex flex-col justify-center border-b md:border-b-0 md:border-r border-border">
-                <h2 className="text-5xl md:text-6xl xl:text-7xl font-bold uppercase leading-none tracking-tight text-foreground mb-8">
+        <section
+            id="about"
+            className="bg-background border-t border-b border-border grid grid-cols-1 md:grid-cols-2 max-w-7xl mx-auto"
+        >
+            {/* LEFT */}
+            <div className="px-6 md:px-12 py-24 md:py-32 flex flex-col justify-center border-b md:border-b-0 md:border-r border-border">
+
+                {/* HEADLINE — strong + editorial */}
+                <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-[96px] font-bold uppercase leading-[0.95] tracking-tight text-foreground mb-10">
                     {data?.headlineLineOne && <span className="block">{data.headlineLineOne}</span>}
                     {data?.headlineLineTwo && <span className="block">{data.headlineLineTwo}</span>}
                 </h2>
+
+                {/* BIO — calm contrast */}
                 {data?.bio && (
-                    <p className="text-xs uppercase tracking-widest text-muted-foreground max-w-xs leading-relaxed">
+                    <p className="text-[15px] sm:text-base leading-relaxed text-muted-foreground max-w-sm [font-family:var(--font-body)]">
                         {data.bio}
                     </p>
                 )}
             </div>
+
 
             {/* Right — timeline */}
             <div className="relative section-spacing md:px-12 px-12">

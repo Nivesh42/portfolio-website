@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 
-
 import type { ContactData } from "@/types";
 
 interface ContactProps {
@@ -35,11 +34,13 @@ export const Contact = ({ data }: ContactProps) => {
         <section id="contact" className="min-h-full bg-background flex items-center justify-center px-6 py-24">
             <div className="container-main flex items-center justify-center">
                 <div className="border border-border p-10 w-full max-w-md">
-                    <h2 className="text-2xl font-bold uppercase tracking-tight text-foreground mb-10">
+
+                    <h2 className="text-h2 font-bold uppercase tracking-tight text-foreground mb-10">
                         {data?.heading ?? "Start Transmission"}
                     </h2>
 
-                    <div className="flex flex-col gap-7">
+                    <div className="flex flex-col gap-6">
+
                         <div className="flex flex-col gap-2">
                             <label className="text-xs uppercase tracking-widest text-muted-foreground">
                                 {data?.nameLabel ?? "Identification"}
@@ -49,7 +50,7 @@ export const Contact = ({ data }: ContactProps) => {
                                 placeholder={data?.namePlaceholder ?? "YOUR NAME"}
                                 value={form.name}
                                 onChange={(e) => setForm({ ...form, name: e.target.value })}
-                                className="bg-transparent border border-border px-4 py-3 text-sm uppercase tracking-widest text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-primary transition-colors"
+                                className="bg-transparent border border-border px-4 py-3 text-body uppercase tracking-widest text-foreground placeholder:text-muted-foreground/60 focus:outline-none focus:border-primary"
                             />
                         </div>
 
@@ -62,7 +63,7 @@ export const Contact = ({ data }: ContactProps) => {
                                 placeholder={data?.emailPlaceholder ?? "EMAIL@EXAMPLE.COM"}
                                 value={form.email}
                                 onChange={(e) => setForm({ ...form, email: e.target.value })}
-                                className="bg-transparent border border-border px-4 py-3 text-sm uppercase tracking-widest text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-primary transition-colors"
+                                className="bg-transparent border border-border px-4 py-3 text-body uppercase tracking-widest text-foreground placeholder:text-muted-foreground/60 focus:outline-none focus:border-primary"
                             />
                         </div>
 
@@ -75,13 +76,13 @@ export const Contact = ({ data }: ContactProps) => {
                                 rows={4}
                                 value={form.message}
                                 onChange={(e) => setForm({ ...form, message: e.target.value })}
-                                className="bg-transparent border border-border px-4 py-3 text-sm uppercase tracking-widest text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-primary transition-colors resize-none"
+                                className="bg-transparent border border-border px-4 py-3 text-body uppercase tracking-widest text-foreground placeholder:text-muted-foreground/60 focus:outline-none focus:border-primary resize-none"
                             />
                         </div>
 
                         <button
                             onClick={handleSubmit}
-                            className="w-full bg-background border border-border text-foreground text-sm font-medium uppercase tracking-widest py-4 hover:bg-primary hover:text-primary-foreground hover:border-primary transition-colors mt-2"
+                            className="w-full bg-background border border-border text-foreground text-body font-medium uppercase tracking-widest py-4 hover:bg-primary hover:text-primary-foreground hover:border-primary mt-2"
                         >
                             {data?.submitLabel ?? "Initialize Contact"}
                         </button>

@@ -11,14 +11,16 @@ export const Footer = ({ copyright, socialLinks }: FooterProps) => {
     return (
         <footer className="border-t border-border bg-background px-6 md:px-12 py-8">
             <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
+
                 {/* Left */}
                 <div className="flex flex-col gap-2">
                     <Link
                         href="/"
-                        className="text-foreground font-bold text-base tracking-tight"
+                        className="text-body font-bold tracking-tight text-foreground"
                     >
                         ⠿ NIVESH
                     </Link>
+
                     <p className="text-xs uppercase tracking-widest text-muted-foreground">
                         {copyright}
                     </p>
@@ -36,7 +38,7 @@ export const Footer = ({ copyright, socialLinks }: FooterProps) => {
                                 href={link.url}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="text-xs font-medium uppercase tracking-widest text-muted-foreground hover:text-foreground transition-colors"
+                                className="text-sm uppercase tracking-widest text-muted-foreground hover:text-foreground"
                             >
                                 {link.platform}
                             </Link>

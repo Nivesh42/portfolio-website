@@ -38,7 +38,7 @@ export const Hero = ({ data, resumeUrl }: HeroProps) => {
                     {data?.primaryCta?.label && data?.primaryCta?.href && (
                         <Link
                             href={data.primaryCta.href}
-                            className="bg-primary text-primary-foreground text-xs font-medium px-6 py-3 uppercase tracking-widest hover:bg-primary/90 transition-colors md:text-sm"
+                            className="bg-primary text-primary-foreground text-sm font-medium px-6 py-3 uppercase tracking-widest hover:bg-primary/90 transition-colors md:text-sm"
                         >
                             {data.primaryCta.label}
                         </Link>
@@ -49,7 +49,7 @@ export const Hero = ({ data, resumeUrl }: HeroProps) => {
                             href={resumeUrl}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="border border-border text-foreground text-xs font-medium px-6 py-3 uppercase tracking-widest hover:bg-accent transition-colors md:text-sm"
+                            className="border border-border text-foreground text-sm font-medium px-6 py-3 uppercase tracking-widest hover:bg-accent transition-colors md:text-sm"
                         >
                             {data.secondaryCta.label}
                         </Link>
@@ -57,7 +57,7 @@ export const Hero = ({ data, resumeUrl }: HeroProps) => {
                 </div>
 
                 {data?.subheadline && (
-                    <p className="text-xs uppercase tracking-widest text-muted-foreground max-w-md leading-relaxed">
+                    <p className="text-sm uppercase tracking-widest text-muted-foreground max-w-md leading-relaxed">
                         {data.subheadline}
                     </p>
                 )}

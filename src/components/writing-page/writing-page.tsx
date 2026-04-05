@@ -9,7 +9,7 @@ import { ShareButton } from "./../share-button";
 const ptComponents = {
     block: {
         normal: ({ children }: { children?: React.ReactNode }) => (
-            <p className="text-base leading-relaxed text-muted-foreground mb-6 [font-family:var(--font-body)]">
+            <p className="text-body leading-relaxed text-muted-foreground mb-6">
                 {children}
             </p>
         ),
@@ -64,7 +64,7 @@ const ptComponents = {
                         />
                     </div>
                     {value.caption && (
-                        <figcaption className="text-[10px] uppercase tracking-widest text-muted-foreground mt-3">
+                        <figcaption className="text-xs uppercase tracking-widest text-muted-foreground mt-3">
                             {value.caption}
                         </figcaption>
                     )}
@@ -95,12 +95,12 @@ export function EssayPage({ post }: { post: PostDetail }) {
                 {/* Tag + reading time */}
                 <div className="flex items-center gap-4 mb-6 border-l-2 border-primary pl-4">
                     {post.tags && post.tags[0] && (
-                        <span className="text-[10px] uppercase tracking-widest text-primary border border-primary/40 px-2 py-1">
+                        <span className="text-xs uppercase tracking-widest text-primary border border-primary/40 px-2 py-1">
                             {post.tags[0]}
                         </span>
                     )}
                     {post.readingTime && (
-                        <span className="text-[10px] uppercase tracking-widest text-muted-foreground">
+                        <span className="text-xs uppercase tracking-widest text-muted-foreground">
                             Est. Read: {post.readingTime} min
                         </span>
                     )}
@@ -117,7 +117,7 @@ export function EssayPage({ post }: { post: PostDetail }) {
                 {/* Meta row */}
                 <div className="grid grid-cols-3 gap-6 mb-12">
                     <div>
-                        <p className="text-[9px] uppercase tracking-widest text-muted-foreground mb-1">
+                        <p className="text-label uppercase tracking-widest text-muted-foreground mb-1">
                             Author
                         </p>
                         <p className="text-xs font-semibold uppercase tracking-wide text-foreground">
@@ -126,7 +126,7 @@ export function EssayPage({ post }: { post: PostDetail }) {
                     </div>
                     {formattedDate && (
                         <div>
-                            <p className="text-[9px] uppercase tracking-widest text-muted-foreground mb-1">
+                            <p className="text-label uppercase tracking-widest text-muted-foreground mb-1">
                                 Published
                             </p>
                             <p className="text-xs font-semibold uppercase tracking-wide text-foreground">
@@ -136,7 +136,7 @@ export function EssayPage({ post }: { post: PostDetail }) {
                     )}
                     {post.tags && post.tags.length > 0 && (
                         <div>
-                            <p className="text-[9px] uppercase tracking-widest text-muted-foreground mb-1">
+                            <p className="text-label uppercase tracking-widest text-muted-foreground mb-1">
                                 Tags
                             </p>
                             <p className="text-xs font-semibold uppercase tracking-wide text-foreground">
@@ -178,11 +178,11 @@ export function EssayPage({ post }: { post: PostDetail }) {
 
                     {/* Left — series note */}
                     <div className="flex flex-col gap-2 max-w-xs">
-                        <p className="text-[9px] uppercase tracking-widest text-muted-foreground">
+                        <p className="text-label uppercase tracking-widest text-muted-foreground">
                             End_of_Transmission
                         </p>
                         {post.excerpt && (
-                            <p className="text-[10px] uppercase tracking-widest text-muted-foreground leading-relaxed">
+                            <p className="text-xs uppercase tracking-widest text-muted-foreground leading-relaxed">
                                 {post.excerpt}
                             </p>
                         )}
@@ -193,7 +193,7 @@ export function EssayPage({ post }: { post: PostDetail }) {
                         <ShareButton title={post.title ?? ""} />
                         <Link
                             href="/writing"
-                            className="border border-border px-8 py-3 text-[10px] uppercase tracking-widest text-foreground hover:bg-accent transition text-left"
+                            className="border border-border px-8 py-3 text-xs uppercase tracking-widest text-foreground hover:bg-accent transition text-left"
                         >
                             Read_All_Writings
                         </Link>
@@ -209,7 +209,7 @@ export function EssayPage({ post }: { post: PostDetail }) {
                         className="flex items-center justify-between px-6 md:px-12 py-10 max-w-3xl mx-auto group hover:bg-accent/30 transition-colors"
                     >
                         <div>
-                            <p className="text-[9px] uppercase tracking-widest text-muted-foreground mb-2">
+                            <p className="text-label uppercase tracking-widest text-muted-foreground mb-2">
                                 Next Essay
                             </p>
                             <p className="text-xl md:text-3xl font-bold uppercase tracking-tight text-foreground group-hover:text-primary transition-colors">

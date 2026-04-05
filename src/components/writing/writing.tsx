@@ -36,7 +36,7 @@ export const Writing = ({ posts, showCTA }: { posts: PostCardData[]; showCTA: bo
                                     {post.tags?.map((tag) => (
                                         <span
                                             key={tag}
-                                            className="text-[10px] uppercase tracking-widest border border-border px-2 py-1 text-muted-foreground"
+                                            className="text-label uppercase tracking-widest border border-border px-2 py-1 text-muted-foreground"
                                         >
                                             {tag}
                                         </span>
@@ -45,7 +45,7 @@ export const Writing = ({ posts, showCTA }: { posts: PostCardData[]; showCTA: bo
                             </div>
 
                             {/* Right date */}
-                            <div className="text-xs uppercase tracking-widest text-muted-foreground md:mt-1">
+                            <div className="text-sm uppercase tracking-widest text-muted-foreground md:mt-1">
                                 {post.publishedAt
                                     ? new Date(post.publishedAt).toLocaleDateString("en-US", {
                                         month: "short",
@@ -62,7 +62,7 @@ export const Writing = ({ posts, showCTA }: { posts: PostCardData[]; showCTA: bo
                     <div className="flex justify-center mt-16">
                         <Link
                             href="/writing"
-                            className="border border-border px-8 py-3 text-xs uppercase tracking-widest hover:bg-accent transition"
+                            className="border border-border px-8 py-3 text-sm uppercase tracking-widest hover:bg-accent transition"
                         >
                             Read all writings
                         </Link>

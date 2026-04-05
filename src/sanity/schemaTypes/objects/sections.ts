@@ -6,6 +6,11 @@ export const textBlock = defineArrayMember({
     title: "Text Block",
     fields: [
         defineField({
+            name: "title",
+            title: "Section Title",
+            type: "string",
+        }),
+        defineField({
             name: "body",
             title: "Body",
             type: "portableTextBody",

@@ -519,7 +519,7 @@ export type AllPostsQueryResult = Array<{
     publishedAt: string | null;
 }>;
 // Variable: projectBySlugQuery
-// Query: *[_type == "project" && slug.current == $slug][0] {    title,    "slug": slug.current,    industry,    subheading,    tags,    publishedAt,    outcomeMetrics,    heroImage {      asset->{ url },      alt    },    sections[] {      _type,      _key,      // textBlock      _type == "textBlock" => { body },      // imageBlock      _type == "imageBlock" => {        image { asset->{ url } },        caption,        alt,        fullWidth      },      // metricsBlock      _type == "metricsBlock" => {        metrics[] { value, label }      },      // quoteBlock      _type == "quoteBlock" => { quote, attribution },      // divider      _type == "divider" => { variant }    },    "nextProject": *[_type == "project" && publishedAt < ^.publishedAt] | order(publishedAt desc)[0] {      title,      "slug": slug.current    }  }
+// Query: *[_type == "project" && slug.current == $slug][0] {    title,    "slug": slug.current,    industry,    subheading,    tags,    publishedAt,    outcomeMetrics,    heroImage {      asset->{ url },      alt    },    sections[] {      _type,      _key,      // textBlock      _type == "textBlock" => {  title, body },      // imageBlock      _type == "imageBlock" => {        image { asset->{ url } },        caption,        alt,        fullWidth      },      // metricsBlock      _type == "metricsBlock" => {        metrics[] { value, label }      },      // quoteBlock      _type == "quoteBlock" => { quote, attribution },      // divider      _type == "divider" => { variant }    },    "nextProject": *[_type == "project" && publishedAt < ^.publishedAt] | order(publishedAt desc)[0] {      title,      "slug": slug.current    }  }
 export type ProjectBySlugQueryResult = {
     title: string | null;
     slug: string | null;
@@ -573,6 +573,7 @@ export type ProjectBySlugQueryResult = {
         | {
               _type: 'textBlock';
               _key: string;
+              title: null;
               body: PortableTextBody | null;
           }
     > | null;
@@ -613,7 +614,7 @@ declare module '@sanity/client' {
         '\n  *[_type == "project"] | order(featured desc, publishedAt desc){\n    title,\n    "slug": slug.current,\n    industry,\n    subheading,\n    outcomeMetrics[0...2]\n  }\n': AllCaseStudiesQueryResult;
         '\n  *[_type == "post" && featured == true] | order(publishedAt desc)[0...2]{\n    title,\n    "slug": slug.current,\n    tags,\n    publishedAt\n  }\n': PostsPreviewQueryResult;
         '\n  *[_type == "post"] | order(publishedAt desc){\n    title,\n    "slug": slug.current,\n    tags,\n    publishedAt\n  }\n': AllPostsQueryResult;
-        '\n  *[_type == "project" && slug.current == $slug][0] {\n    title,\n    "slug": slug.current,\n    industry,\n    subheading,\n    tags,\n    publishedAt,\n    outcomeMetrics,\n    heroImage {\n      asset->{ url },\n      alt\n    },\n    sections[] {\n      _type,\n      _key,\n      // textBlock\n      _type == "textBlock" => { body },\n      // imageBlock\n      _type == "imageBlock" => {\n        image { asset->{ url } },\n        caption,\n        alt,\n        fullWidth\n      },\n      // metricsBlock\n      _type == "metricsBlock" => {\n        metrics[] { value, label }\n      },\n      // quoteBlock\n      _type == "quoteBlock" => { quote, attribution },\n      // divider\n      _type == "divider" => { variant }\n    },\n    "nextProject": *[_type == "project" && publishedAt < ^.publishedAt] | order(publishedAt desc)[0] {\n      title,\n      "slug": slug.current\n    }\n  }\n': ProjectBySlugQueryResult;
+        '\n  *[_type == "project" && slug.current == $slug][0] {\n    title,\n    "slug": slug.current,\n    industry,\n    subheading,\n    tags,\n    publishedAt,\n    outcomeMetrics,\n    heroImage {\n      asset->{ url },\n      alt\n    },\n    sections[] {\n      _type,\n      _key,\n      // textBlock\n      _type == "textBlock" => {  title, body },\n      // imageBlock\n      _type == "imageBlock" => {\n        image { asset->{ url } },\n        caption,\n        alt,\n        fullWidth\n      },\n      // metricsBlock\n      _type == "metricsBlock" => {\n        metrics[] { value, label }\n      },\n      // quoteBlock\n      _type == "quoteBlock" => { quote, attribution },\n      // divider\n      _type == "divider" => { variant }\n    },\n    "nextProject": *[_type == "project" && publishedAt < ^.publishedAt] | order(publishedAt desc)[0] {\n      title,\n      "slug": slug.current\n    }\n  }\n': ProjectBySlugQueryResult;
         '\n  *[_type == "post" && slug.current == $slug][0] {\n    title,\n    "slug": slug.current,\n    excerpt,\n    tags,\n    publishedAt,\n    coverImage {\n      asset->{ url },\n      alt\n    },\n    body,\n    "readingTime": round(length(pt::text(body)) / 5 / 180),\n    "nextPost": *[_type == "post" && publishedAt < ^.publishedAt] | order(publishedAt desc)[0] {\n      title,\n      "slug": slug.current\n    }\n  }\n': PostBySlugQueryResult;
     }
 }

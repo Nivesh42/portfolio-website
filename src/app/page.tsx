@@ -18,7 +18,6 @@ export default async function Home() {
 
     if (!page) notFound();
 
-    // null → undefined so it matches `string | undefined`
     const resumeUrl = page.settings?.resumePdf?.asset?.url ?? undefined;
 
     return (

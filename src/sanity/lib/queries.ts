@@ -110,7 +110,7 @@ export const projectBySlugQuery = defineQuery(`
       _type,
       _key,
       // textBlock
-      _type == "textBlock" => { body },
+      _type == "textBlock" => {  title, body },
       // imageBlock
       _type == "imageBlock" => {
         image { asset->{ url } },
