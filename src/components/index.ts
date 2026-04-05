@@ -5,3 +5,6 @@ export * from "./contact";
 export * from "./about";
 export * from "./writing";
 export * from "./case-studies";
+export * from "./case-study-page";
+export * from "./writing-page";
+export * from "./share-button";

@@ -1,9 +1,9 @@
 import Link from "next/link"
 
-import type { ProjectCardData, OutcomeMetric } from "@/types";
+import type { ProjectCardData, AllProjectCardData, OutcomeMetric } from "@/types";
 
 interface CaseStudiesProps {
-    projects: ProjectCardData[];
+  projects: ProjectCardData[] | AllProjectCardData[];
 }
 
 export const CaseStudies = ({ projects }: CaseStudiesProps) => {

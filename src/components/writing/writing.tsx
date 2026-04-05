@@ -1,4 +1,4 @@
-import Link from "next/link"
+import Link from "next/link";
 import type { PostCardData } from "@/types";
 
 export const Writing = ({ posts }: { posts: PostCardData[] }) => {
@@ -23,7 +23,7 @@ export const Writing = ({ posts }: { posts: PostCardData[] }) => {
                     {posts?.map((post) => (
                         <Link
                             key={post.slug}
-                            href={`/essays/${post.slug}`}
+                            href={`/writing/${post.slug}`}
                             className="group grid grid-cols-1 md:grid-cols-[1fr_auto] gap-6 py-10 border-b border-border items-start transition"
                         >
                             {/* Left */}
@@ -60,10 +60,10 @@ export const Writing = ({ posts }: { posts: PostCardData[] }) => {
                 {/* CTA */}
                 <div className="flex justify-center mt-16">
                     <Link
-                        href="/essays"
+                        href="/writing"
                         className="border border-border px-8 py-3 text-xs uppercase tracking-widest hover:bg-accent transition"
                     >
-                        Read all essays
+                        Read all writings
                     </Link>
                 </div>
             </div>

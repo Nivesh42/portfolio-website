@@ -7,10 +7,10 @@
     --color-background: #0a0a0f;
     --color-foreground: #f0f0f5;
 
-    --color-primary: #0033ff;
-    --color-primary-foreground: #ffffff;
+    --color-primary: #00A3A3;
+    --color-primary-foreground: #0a0a0f;
 
-    --color-secondary: #626fcd;
+    --color-secondary: #007777;
     --color-secondary-foreground: #ffffff;
 
     --color-destructive: #ae1501;
@@ -30,7 +30,7 @@
 
     --color-border: rgba(118, 118, 131, 0.2);
     --color-input: rgba(118, 118, 131, 0.2);
-    --color-ring: #0033ff;
+    --color-ring: #4DD6D6;
 
     --color-neutral: #767683;
 

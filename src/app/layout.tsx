@@ -9,6 +9,10 @@ import { Space_Grotesk } from "next/font/google";
 export const metadata: Metadata = {
     title: "Nivesh Jain — Product Manager",
     description: "PM bridging the gap between technical possibility and business necessity.",
+    icons: {
+        icon: "/favicon.ico",
+        shortcut: "/favicon.ico",
+    },
 };
 
 const spaceGrotesk = Space_Grotesk({
@@ -34,6 +38,7 @@ export default async function RootLayout({
 
     return (
         <html lang="en" className="dark h-full antialiased" data-scroll-behavior="smooth">
+            <link rel="icon" href="/favicon.ico" />
             <body className={`${spaceGrotesk.className} min-h-full flex flex-col`}>
                 <Header siteName={siteName} navLinks={navLinks} />
                 <main className="flex-1">{children}</main>

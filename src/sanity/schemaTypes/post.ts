@@ -57,6 +57,13 @@ export const postSchema = defineType({
             title: "SEO",
             type: "seo",
         }),
+        defineField({
+            name: "featured",
+            title: "Featured on homepage?",
+            type: "boolean",
+            initialValue: false,
+            description: "Show this post in the homepage preview.",
+        }),
     ],
 
     orderings: [

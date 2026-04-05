@@ -123,38 +123,38 @@ export type Post = {
 
 export type PortableTextBody = Array<
     | {
-        children?: Array<{
-            marks?: Array<string>;
-            text?: string;
-            _type: 'span';
-            _key: string;
-        }>;
-        style?: 'normal' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'blockquote';
-        listItem?: 'bullet' | 'number';
-        markDefs?: Array<{
-            href?: string;
-            _type: 'link';
-            _key: string;
-        }>;
-        level?: number;
-        _type: 'block';
-        _key: string;
-    }
+          children?: Array<{
+              marks?: Array<string>;
+              text?: string;
+              _type: 'span';
+              _key: string;
+          }>;
+          style?: 'normal' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'blockquote';
+          listItem?: 'bullet' | 'number';
+          markDefs?: Array<{
+              href?: string;
+              _type: 'link';
+              _key: string;
+          }>;
+          level?: number;
+          _type: 'block';
+          _key: string;
+      }
     | {
-        asset?: {
-            _ref: string;
-            _type: 'reference';
-            _weak?: boolean;
-            [internalGroqTypeReferenceTo]?: 'sanity.imageAsset';
-        };
-        media?: unknown;
-        hotspot?: SanityImageHotspot;
-        crop?: SanityImageCrop;
-        caption?: string;
-        alt?: string;
-        _type: 'image';
-        _key: string;
-    }
+          asset?: {
+              _ref: string;
+              _type: 'reference';
+              _weak?: boolean;
+              [internalGroqTypeReferenceTo]?: 'sanity.imageAsset';
+          };
+          media?: unknown;
+          hotspot?: SanityImageHotspot;
+          crop?: SanityImageCrop;
+          caption?: string;
+          alt?: string;
+          _type: 'image';
+          _key: string;
+      }
 >;
 
 export type Slug = {
@@ -194,49 +194,49 @@ export type Project = {
     }>;
     sections?: Array<
         | {
-            body?: PortableTextBody;
-            _type: 'textBlock';
-            _key: string;
-        }
+              body?: PortableTextBody;
+              _type: 'textBlock';
+              _key: string;
+          }
         | {
-            image?: {
-                asset?: {
-                    _ref: string;
-                    _type: 'reference';
-                    _weak?: boolean;
-                    [internalGroqTypeReferenceTo]?: 'sanity.imageAsset';
-                };
-                media?: unknown;
-                hotspot?: SanityImageHotspot;
-                crop?: SanityImageCrop;
-                _type: 'image';
-            };
-            caption?: string;
-            alt?: string;
-            fullWidth?: boolean;
-            _type: 'imageBlock';
-            _key: string;
-        }
+              image?: {
+                  asset?: {
+                      _ref: string;
+                      _type: 'reference';
+                      _weak?: boolean;
+                      [internalGroqTypeReferenceTo]?: 'sanity.imageAsset';
+                  };
+                  media?: unknown;
+                  hotspot?: SanityImageHotspot;
+                  crop?: SanityImageCrop;
+                  _type: 'image';
+              };
+              caption?: string;
+              alt?: string;
+              fullWidth?: boolean;
+              _type: 'imageBlock';
+              _key: string;
+          }
         | {
-            metrics?: Array<{
-                value?: string;
-                label?: string;
-                _key: string;
-            }>;
-            _type: 'metricsBlock';
-            _key: string;
-        }
+              metrics?: Array<{
+                  value?: string;
+                  label?: string;
+                  _key: string;
+              }>;
+              _type: 'metricsBlock';
+              _key: string;
+          }
         | {
-            quote?: string;
-            attribution?: string;
-            _type: 'quoteBlock';
-            _key: string;
-        }
+              quote?: string;
+              attribution?: string;
+              _type: 'quoteBlock';
+              _key: string;
+          }
         | {
-            variant?: 'line' | 'space' | 'gradient';
-            _type: 'divider';
-            _key: string;
-        }
+              variant?: 'line' | 'space' | 'gradient';
+              _type: 'divider';
+              _key: string;
+          }
     >;
     publishedAt?: string;
     featured?: boolean;
@@ -481,9 +481,9 @@ export type HomePageQueryResult = {
         } | null;
     } | null;
 } | null;
-// Variable: caseStudiesQuery
-// Query: *[_type == "project"] | order(featured desc, publishedAt desc)[0...4]{    title,    "slug": slug.current,    industry,    subheading,    outcomeMetrics[0...2]  }
-export type CaseStudiesQueryResult = Array<{
+// Variable: caseStudiesPreviewQuery
+// Query: *[_type == "project" && featured == true] | order(publishedAt desc)[0...2]{    title,    "slug": slug.current,    industry,    subheading,    outcomeMetrics[0...2]  }
+export type CaseStudiesPreviewQueryResult = Array<{
     title: string | null;
     slug: string | null;
     industry: string | null;
@@ -494,14 +494,114 @@ export type CaseStudiesQueryResult = Array<{
         _key: string;
     }> | null;
 }>;
-// Variable: postsQuery
-// Query: *[_type == "post"] | order(publishedAt desc)[0...3]{    title,    "slug": slug.current,    tags,    publishedAt  }
-export type PostsQueryResult = Array<{
+// Variable: allCaseStudiesQuery
+// Query: *[_type == "project"] | order(featured desc, publishedAt desc){    title,    "slug": slug.current,    industry,    subheading,    outcomeMetrics[0...2]  }
+export type AllCaseStudiesQueryResult = Array<{
+    title: string | null;
+    slug: string | null;
+    industry: string | null;
+    subheading: string | null;
+    outcomeMetrics: Array<{
+        value?: string;
+        label?: string;
+        _key: string;
+    }> | null;
+}>;
+// Variable: postsPreviewQuery
+// Query: *[_type == "post" && featured == true] | order(publishedAt desc)[0...2]{    title,    "slug": slug.current,    tags,    publishedAt  }
+export type PostsPreviewQueryResult = Array<never>;
+// Variable: allPostsQuery
+// Query: *[_type == "post"] | order(publishedAt desc){    title,    "slug": slug.current,    tags,    publishedAt  }
+export type AllPostsQueryResult = Array<{
     title: string | null;
     slug: string | null;
     tags: Array<string> | null;
     publishedAt: string | null;
 }>;
+// Variable: projectBySlugQuery
+// Query: *[_type == "project" && slug.current == $slug][0] {    title,    "slug": slug.current,    industry,    subheading,    tags,    publishedAt,    outcomeMetrics,    heroImage {      asset->{ url },      alt    },    sections[] {      _type,      _key,      // textBlock      _type == "textBlock" => { body },      // imageBlock      _type == "imageBlock" => {        image { asset->{ url } },        caption,        alt,        fullWidth      },      // metricsBlock      _type == "metricsBlock" => {        metrics[] { value, label }      },      // quoteBlock      _type == "quoteBlock" => { quote, attribution },      // divider      _type == "divider" => { variant }    },    "nextProject": *[_type == "project" && publishedAt < ^.publishedAt] | order(publishedAt desc)[0] {      title,      "slug": slug.current    }  }
+export type ProjectBySlugQueryResult = {
+    title: string | null;
+    slug: string | null;
+    industry: string | null;
+    subheading: string | null;
+    tags: Array<string> | null;
+    publishedAt: string | null;
+    outcomeMetrics: Array<{
+        value?: string;
+        label?: string;
+        _key: string;
+    }> | null;
+    heroImage: {
+        asset: {
+            url: string | null;
+        } | null;
+        alt: string | null;
+    } | null;
+    sections: Array<
+        | {
+              _type: 'divider';
+              _key: string;
+              variant: 'gradient' | 'line' | 'space' | null;
+          }
+        | {
+              _type: 'imageBlock';
+              _key: string;
+              image: {
+                  asset: {
+                      url: string | null;
+                  } | null;
+              } | null;
+              caption: string | null;
+              alt: string | null;
+              fullWidth: boolean | null;
+          }
+        | {
+              _type: 'metricsBlock';
+              _key: string;
+              metrics: Array<{
+                  value: string | null;
+                  label: string | null;
+              }> | null;
+          }
+        | {
+              _type: 'quoteBlock';
+              _key: string;
+              quote: string | null;
+              attribution: string | null;
+          }
+        | {
+              _type: 'textBlock';
+              _key: string;
+              body: PortableTextBody | null;
+          }
+    > | null;
+    nextProject: {
+        title: string | null;
+        slug: string | null;
+    } | null;
+} | null;
+// Variable: postBySlugQuery
+// Query: *[_type == "post" && slug.current == $slug][0] {    title,    "slug": slug.current,    excerpt,    tags,    publishedAt,    coverImage {      asset->{ url },      alt    },    body,    "readingTime": round(length(pt::text(body)) / 5 / 180),    "nextPost": *[_type == "post" && publishedAt < ^.publishedAt] | order(publishedAt desc)[0] {      title,      "slug": slug.current    }  }
+export type PostBySlugQueryResult = {
+    title: string | null;
+    slug: string | null;
+    excerpt: string | null;
+    tags: Array<string> | null;
+    publishedAt: string | null;
+    coverImage: {
+        asset: {
+            url: string | null;
+        } | null;
+        alt: string | null;
+    } | null;
+    body: PortableTextBody | null;
+    readingTime: number;
+    nextPost: {
+        title: string | null;
+        slug: string | null;
+    } | null;
+} | null;
 
 // Query TypeMap
 import '@sanity/client';
@@ -509,7 +609,11 @@ declare module '@sanity/client' {
     interface SanityQueries {
         '\n  *[_type == "siteSettings"][0] {\n    siteName,\n    tagline,\n    footerCopyright,\n    resumePdf { asset-> { url } },\n    socialLinks[] { platform, url },\n    navLinks[] { label, href },\n  }\n': SiteSettingsQueryResult;
         '\n  *[_type == "page"][0] {\n    hero {\n      badge,\n      headlineLineOne,\n      headlineLineTwo,\n      headlineAccent,\n      subheadline,\n      primaryCta,\n      secondaryCta,\n    },\n    about {\n      headlineLineOne,\n      headlineLineTwo,\n      bio,\n      timeline[] {\n        period,\n        role,\n        description,\n        current,\n      },\n    },\n    contact {\n      heading,\n      nameLabel,\n      namePlaceholder,\n      emailLabel,\n      emailPlaceholder,\n      messageLabel,\n      messagePlaceholder,\n      submitLabel,\n    },\n    "settings": *[_type == "siteSettings"][0]{\n      resumePdf {\n        asset->{ url }\n      }\n    }\n  }\n': HomePageQueryResult;
-        '\n  *[_type == "project"] | order(featured desc, publishedAt desc)[0...4]{\n    title,\n    "slug": slug.current,\n    industry,\n    subheading,\n    outcomeMetrics[0...2]\n  }\n': CaseStudiesQueryResult;
-        '\n  *[_type == "post"] | order(publishedAt desc)[0...3]{\n    title,\n    "slug": slug.current,\n    tags,\n    publishedAt\n  }\n': PostsQueryResult;
+        '\n  *[_type == "project" && featured == true] | order(publishedAt desc)[0...2]{\n    title,\n    "slug": slug.current,\n    industry,\n    subheading,\n    outcomeMetrics[0...2]\n  }\n': CaseStudiesPreviewQueryResult;
+        '\n  *[_type == "project"] | order(featured desc, publishedAt desc){\n    title,\n    "slug": slug.current,\n    industry,\n    subheading,\n    outcomeMetrics[0...2]\n  }\n': AllCaseStudiesQueryResult;
+        '\n  *[_type == "post" && featured == true] | order(publishedAt desc)[0...2]{\n    title,\n    "slug": slug.current,\n    tags,\n    publishedAt\n  }\n': PostsPreviewQueryResult;
+        '\n  *[_type == "post"] | order(publishedAt desc){\n    title,\n    "slug": slug.current,\n    tags,\n    publishedAt\n  }\n': AllPostsQueryResult;
+        '\n  *[_type == "project" && slug.current == $slug][0] {\n    title,\n    "slug": slug.current,\n    industry,\n    subheading,\n    tags,\n    publishedAt,\n    outcomeMetrics,\n    heroImage {\n      asset->{ url },\n      alt\n    },\n    sections[] {\n      _type,\n      _key,\n      // textBlock\n      _type == "textBlock" => { body },\n      // imageBlock\n      _type == "imageBlock" => {\n        image { asset->{ url } },\n        caption,\n        alt,\n        fullWidth\n      },\n      // metricsBlock\n      _type == "metricsBlock" => {\n        metrics[] { value, label }\n      },\n      // quoteBlock\n      _type == "quoteBlock" => { quote, attribution },\n      // divider\n      _type == "divider" => { variant }\n    },\n    "nextProject": *[_type == "project" && publishedAt < ^.publishedAt] | order(publishedAt desc)[0] {\n      title,\n      "slug": slug.current\n    }\n  }\n': ProjectBySlugQueryResult;
+        '\n  *[_type == "post" && slug.current == $slug][0] {\n    title,\n    "slug": slug.current,\n    excerpt,\n    tags,\n    publishedAt,\n    coverImage {\n      asset->{ url },\n      alt\n    },\n    body,\n    "readingTime": round(length(pt::text(body)) / 5 / 180),\n    "nextPost": *[_type == "post" && publishedAt < ^.publishedAt] | order(publishedAt desc)[0] {\n      title,\n      "slug": slug.current\n    }\n  }\n': PostBySlugQueryResult;
     }
 }
